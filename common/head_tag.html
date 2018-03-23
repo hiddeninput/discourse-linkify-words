@@ -30,8 +30,10 @@
   let regex = new RegExp("(\\s|^)+" + escapedWords + "(([:.;,]+(\\s|$))|\\s|$)", "ig");
 
   let createLink = function(text) {
-      let lower = text.toLowerCase();
-      let href = words[lower];
+      //let lower = text.toLowerCase();
+      //let href = words[lower];
+      let lower = text.split(" ");
+      let href = "https://brickset.com/sets/" + lower[1];
       var link = document.createElement('a');
       link.innerHTML = text;
       link.href = href;
