@@ -20,7 +20,8 @@
   };
 
   let escapeRegExp = function(str) {
-     return str.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, "\\$&");
+     //return str.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, "\\$&");
+     return str;
   }
 
   let keys = Object.keys(words).sort((x,y) => y.length - x.length);
