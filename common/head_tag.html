@@ -39,8 +39,14 @@
       link.innerHTML = text;
       link.href = href;
       link.className = 'linkify-word no-track-link';
-      //return link;
-      return href;
+      return link;
+  };
+
+  let createText = function(text) {
+      let lower = text.split(" ");
+      let href = "https://brickset.com/sets/" + lower[1];
+      var node = document.createTextNode(href);
+      return node;
   };
 
   let autolink = function(text) {
@@ -54,7 +60,7 @@
 
           text.splitText(match.index + match[1].length);
           text.nextSibling.splitText(match[2].length);
-          text.parentNode.replaceChild(createLink(match[2]), text.nextSibling);
+          text.parentNode.replaceChild(createText(match[2]), text.nextSibling);
       }
   }
 
