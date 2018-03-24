@@ -28,25 +28,15 @@
 
   let escapedWords = "((" + keys.map(w => escapeRegExp(w)).join(")|(") + "))";
   let regex = new RegExp("(\\s|^)+" + escapedWords + "(([:.;,]+(\\s|$))|\\s|$)", "ig");
-  //let regex2 = new RegExp("^" + escapedWords + "$", "igm");
 
   let createLink = function(text) {
-      //let lower = text.toLowerCase();
-      //let href = words[lower];
-      let lower = text.split(" ");
-      let href = "https://brickset.com/sets/" + lower[1];
+      let setNumber = text.split(" ")[1];
+      let href = "https://brickset.com/sets/" + setNumber;
       var link = document.createElement('a');
       link.innerHTML = text;
       link.href = href;
       link.className = 'linkify-word no-track-link';
       return link;
-  };
-
-  let createText = function(text) {
-      let lower = text.split(" ");
-      let href = "https://brickset.com/sets/" + lower[1];
-      var node = document.createTextNode(href);
-      return node;
   };
 
   let autolink = function(text) {
@@ -60,7 +50,7 @@
 
           text.splitText(match.index + match[1].length);
           text.nextSibling.splitText(match[2].length);
-          text.parentNode.replaceChild(createText(match[2]), text.nextSibling);
+          text.parentNode.replaceChild(createLink(match[2]), text.nextSibling);
       }
   }
 
